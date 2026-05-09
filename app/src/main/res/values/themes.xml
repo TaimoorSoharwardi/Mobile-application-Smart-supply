@@ -1,9 +1,12 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
     <style name="Base.Theme.MobileApplicationSmartSupply" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="android:statusBarColor">@color/bg_dark</item>
+        <item name="android:navigationBarColor">@color/bg_card</item>
     </style>
 
     <style name="Theme.MobileApplicationSmartSupply" parent="Base.Theme.MobileApplicationSmartSupply" />
+
+    <style name="Theme.MobileApplicationSmartSupply.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.MobileApplicationSmartSupply.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

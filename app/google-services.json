@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "20549576166",
+    "project_id": "smart-supply-65da0",
+    "storage_bucket": "smart-supply-65da0.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:20549576166:android:96978b067acc91baf8e227",
+        "android_client_info": {
+          "package_name": "com.example.mobileapplicationsmartsupply"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBwo8zYm_6ToZBd3z2pvJFgqEQ4pdwLV-Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

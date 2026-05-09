@@ -13,16 +13,20 @@ class MainViewModel : ViewModel() {
     private val _recentOrders = MutableLiveData<List<Order>>()
     val recentOrders: LiveData<List<Order>> = _recentOrders
 
-    private val _stats = MutableLiveData<Triple<Int, Int, Int>>() // Total, Pending, Delivered
+    private val _stats = MutableLiveData<Triple<Int, Int, Int>>()
     val stats: LiveData<Triple<Int, Int, Int>> = _stats
 
     fun fetchHomeData() {
-        val allOrders = repository.getSampleOrders()
-        _recentOrders.value = allOrders.take(5)
-        
-        val total = allOrders.size
-        val pending = allOrders.count { it.status == "Pending" }
-        val delivered = allOrders.count { it.status == "Delivered" }
-        _stats.value = Triple(total, pending, delivered)
+        repository.getAllOrders(
+            onSuccess = { orders ->
+                _recentOrders.value = orders.take(5)
+                _stats.value = Triple(
+                    orders.size,
+                    orders.count { it.status == "Pending" },
+                    orders.count { it.status == "Completed" }
+                )
+            },
+            onError = { /* silently ignore on home */ }
+        )
     }
 }

@@ -1,6 +1,170 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_dark"
+    android:orientation="vertical">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="16dp"
+            android:paddingTop="24dp"
+            android:paddingBottom="16dp">
+
+            <!-- Profile Card -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/bg_card_gold_border"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="24dp">
+
+                <!-- Logo -->
+                <LinearLayout
+                    android:layout_width="72dp"
+                    android:layout_height="72dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@drawable/bg_logo_black_circle"
+                    android:gravity="center"
+                    android:orientation="vertical">
+                    <ImageView android:layout_width="36dp" android:layout_height="36dp" android:src="@drawable/ic_logo_gem" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="SMARTSUPPLY" android:textColor="@color/gold" android:textSize="5sp" android:letterSpacing="0.1" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:text="Smart Supply"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <!-- Email -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/bg_service_card"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="14dp">
+                    <ImageView android:layout_width="18dp" android:layout_height="18dp" android:layout_marginEnd="12dp" android:src="@drawable/ic_email_icon" />
+                    <TextView android:id="@+id/tvProfileEmail" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="—" android:textColor="@color/white" android:textSize="13sp" />
+                </LinearLayout>
+
+                <!-- Phone -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/bg_service_card"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="14dp">
+                    <ImageView android:layout_width="18dp" android:layout_height="18dp" android:layout_marginEnd="12dp" android:src="@drawable/ic_phone_icon" />
+                    <TextView android:id="@+id/tvProfilePhone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="—" android:textColor="@color/white" android:textSize="13sp" />
+                </LinearLayout>
+
+                <!-- Location -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:background="@drawable/bg_service_card"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="14dp">
+                    <ImageView android:layout_width="18dp" android:layout_height="18dp" android:layout_marginEnd="12dp" android:src="@drawable/ic_location_icon" />
+                    <TextView android:id="@+id/tvProfileLocation" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="—" android:textColor="@color/white" android:textSize="12sp" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- Edit Profile -->
+            <LinearLayout
+                android:id="@+id/btnEditProfile"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/bg_settings_item"
+                android:foreground="@drawable/ripple_card"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingHorizontal="16dp">
+                <LinearLayout android:layout_width="36dp" android:layout_height="36dp" android:layout_marginEnd="14dp" android:background="@drawable/bg_icon_circle_gold" android:gravity="center">
+                    <ImageView android:layout_width="18dp" android:layout_height="18dp" android:src="@drawable/ic_edit_icon" android:tint="@color/bg_dark" />
+                </LinearLayout>
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Edit Profile" android:textColor="@color/white" android:textSize="14sp" android:textStyle="bold" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Update your information" android:textColor="@color/hint_gray" android:textSize="12sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Notifications -->
+            <LinearLayout
+                android:id="@+id/btnNotifications"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/bg_settings_item"
+                android:foreground="@drawable/ripple_card"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingHorizontal="16dp">
+                <LinearLayout android:layout_width="36dp" android:layout_height="36dp" android:layout_marginEnd="14dp" android:background="@drawable/bg_icon_circle_gold" android:gravity="center">
+                    <ImageView android:layout_width="18dp" android:layout_height="18dp" android:src="@drawable/ic_bell_icon" android:tint="@color/bg_dark" />
+                </LinearLayout>
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Notifications" android:textColor="@color/white" android:textSize="14sp" android:textStyle="bold" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Manage Notifications" android:textColor="@color/hint_gray" android:textSize="12sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Settings -->
+            <LinearLayout
+                android:id="@+id/btnSettings"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/bg_settings_item"
+                android:foreground="@drawable/ripple_card"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingHorizontal="16dp">
+                <LinearLayout android:layout_width="36dp" android:layout_height="36dp" android:layout_marginEnd="14dp" android:background="@drawable/bg_icon_circle_gold" android:gravity="center">
+                    <ImageView android:layout_width="18dp" android:layout_height="18dp" android:src="@drawable/ic_settings_icon" android:tint="@color/bg_dark" />
+                </LinearLayout>
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Settings" android:textColor="@color/white" android:textSize="14sp" android:textStyle="bold" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="App settings" android:textColor="@color/hint_gray" android:textSize="12sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Logout -->
+            <LinearLayout
+                android:id="@+id/btnLogout"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:background="@drawable/bg_logout_button"
+                android:gravity="center"
+                android:orientation="horizontal">
+                <ImageView android:layout_width="20dp" android:layout_height="20dp" android:layout_marginEnd="10dp" android:src="@drawable/ic_logout_icon" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Logout" android:textColor="@color/logout_red" android:textSize="16sp" android:textStyle="bold" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Bottom Nav -->
+    <include layout="@layout/bottom_nav" />
+
+</LinearLayout>

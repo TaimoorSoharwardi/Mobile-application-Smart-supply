@@ -1,181 +1,204 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg_dark"
-    android:fillViewport="true">
+    android:orientation="vertical">
 
+    <!-- Header -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:paddingBottom="24dp">
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingHorizontal="16dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="4dp">
 
-        <!-- Header -->
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:background="#2A1F00"
+            android:layout_weight="1"
             android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:padding="20dp">
+            android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/btnBack"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="12dp"
-                android:text="← "
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginEnd="4dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:text="←"
                 android:textColor="@color/gold"
-                android:textSize="20sp" />
+                android:textSize="22sp" />
 
             <TextView
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:text="New Request"
                 android:textColor="@color/white"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-
-            <Button
-                android:id="@+id/btnSubmit"
-                android:layout_width="wrap_content"
-                android:layout_height="36dp"
-                android:background="@drawable/bg_gold_button"
-                android:text="Submit"
-                android:textAllCaps="false"
-                android:textColor="#1A1100"
-                android:textSize="12sp"
+                android:textSize="18sp"
                 android:textStyle="bold" />
 
         </LinearLayout>
+
+        <Button
+            android:id="@+id/btnSubmit"
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+            android:background="@drawable/bg_gold_button_pill"
+            android:paddingHorizontal="20dp"
+            android:text="Submit"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="13sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginBottom="16dp"
+        android:text="Fill Out the details below"
+        android:textColor="@color/hint_gray"
+        android:textSize="13sp" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="20dp">
+            android:paddingHorizontal="16dp"
+            android:paddingBottom="16dp">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:text="Service Details"
-                android:textColor="@color/white"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-
-            <!-- Service/Item Name -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:text="Item Name"
-                android:textColor="@color/hint_gray"
-                android:textSize="12sp" />
-
-            <EditText
-                android:id="@+id/etItemName"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_marginBottom="16dp"
-                android:background="@drawable/bg_input_field"
-                android:hint="e.g. Executive Lunch"
-                android:inputType="text"
-                android:paddingHorizontal="14dp"
-                android:textColor="@color/white"
-                android:textColorHint="@color/hint_gray"
-                android:textSize="14sp" />
-
-            <!-- Category -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:text="Category"
-                android:textColor="@color/hint_gray"
-                android:textSize="12sp" />
-
-            <Spinner
-                android:id="@+id/spinnerCategory"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_marginBottom="16dp"
-                android:background="@drawable/bg_input_field"
-                android:paddingHorizontal="14dp" />
-
-            <!-- Quantity -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:text="Quantity"
-                android:textColor="@color/hint_gray"
-                android:textSize="12sp" />
-
-            <EditText
-                android:id="@+id/etQuantity"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_marginBottom="16dp"
-                android:background="@drawable/bg_input_field"
-                android:hint="Enter quantity"
-                android:inputType="number"
-                android:paddingHorizontal="14dp"
-                android:textColor="@color/white"
-                android:textColorHint="@color/hint_gray"
-                android:textSize="14sp" />
-
-            <!-- Delivery Address -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:text="Delivery Address"
-                android:textColor="@color/hint_gray"
-                android:textSize="12sp" />
-
-            <EditText
-                android:id="@+id/etAddress"
+            <!-- Category Icons -->
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
-                android:background="@drawable/bg_input_field"
-                android:gravity="top"
-                android:hint="Full delivery address"
-                android:inputType="textMultiLine"
-                android:minHeight="80dp"
-                android:padding="14dp"
-                android:textColor="@color/white"
-                android:textColorHint="@color/hint_gray"
-                android:textSize="14sp" />
+                android:gravity="center"
+                android:orientation="horizontal">
 
-            <!-- Notes -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:text="Additional Notes (Optional)"
-                android:textColor="@color/hint_gray"
-                android:textSize="12sp" />
+                <LinearLayout android:id="@+id/catKitchen" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:layout_marginHorizontal="4dp" android:background="@drawable/bg_category_icon" android:gravity="center" android:orientation="vertical" android:padding="12dp">
+                    <ImageView android:layout_width="28dp" android:layout_height="28dp" android:src="@drawable/ic_kitchen_icon" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6dp" android:text="Kitchen" android:textColor="@color/white" android:textSize="11sp" />
+                </LinearLayout>
 
-            <EditText
-                android:id="@+id/etNotes"
+                <LinearLayout android:id="@+id/catStationary" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:layout_marginHorizontal="4dp" android:background="@drawable/bg_category_icon" android:gravity="center" android:orientation="vertical" android:padding="12dp">
+                    <ImageView android:layout_width="28dp" android:layout_height="28dp" android:src="@drawable/ic_stationary_icon" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6dp" android:text="Stationary" android:textColor="@color/white" android:textSize="11sp" />
+                </LinearLayout>
+
+                <LinearLayout android:id="@+id/catFurniture" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:layout_marginHorizontal="4dp" android:background="@drawable/bg_category_icon" android:gravity="center" android:orientation="vertical" android:padding="12dp">
+                    <ImageView android:layout_width="28dp" android:layout_height="28dp" android:src="@drawable/ic_furniture_icon" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6dp" android:text="Furniture" android:textColor="@color/white" android:textSize="11sp" />
+                </LinearLayout>
+
+                <LinearLayout android:id="@+id/catEvents" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:layout_marginHorizontal="4dp" android:background="@drawable/bg_category_icon" android:gravity="center" android:orientation="vertical" android:padding="12dp">
+                    <ImageView android:layout_width="28dp" android:layout_height="28dp" android:src="@drawable/ic_events_icon" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6dp" android:text="Events" android:textColor="@color/white" android:textSize="11sp" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- Sub-service selector (shown after category is selected) -->
+            <LinearLayout
+                android:id="@+id/layoutSubService"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/bg_input_field"
-                android:gravity="top"
-                android:hint="Any special instructions"
-                android:inputType="textMultiLine"
-                android:minHeight="80dp"
-                android:padding="14dp"
-                android:textColor="@color/white"
-                android:textColorHint="@color/hint_gray"
-                android:textSize="14sp" />
+                android:layout_marginBottom="12dp"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:text="Service Type"
+                    android:textColor="@color/white"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvSubServiceSelector"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:background="@drawable/bg_input_field"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center_vertical"
+                    android:paddingStart="14dp"
+                    android:paddingEnd="14dp"
+                    android:text="Select service type ▼"
+                    android:textColor="@color/hint_gray"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+
+            <!-- Personal Info Card -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:background="@drawable/bg_card_gold_border"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="8dp" android:text="Full Name" android:textColor="@color/white" android:textSize="13sp" android:textStyle="bold" />
+                <EditText android:id="@+id/etFullName" android:layout_width="match_parent" android:layout_height="48dp" android:layout_marginBottom="12dp" android:background="@drawable/bg_input_field" android:hint="Enter Your Name" android:paddingHorizontal="14dp" android:textColor="@color/white" android:textColorHint="@color/hint_gray" android:textSize="14sp" />
+
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="8dp" android:text="Phone Number" android:textColor="@color/white" android:textSize="13sp" android:textStyle="bold" />
+                <EditText android:id="@+id/etPhone" android:layout_width="match_parent" android:layout_height="48dp" android:layout_marginBottom="12dp" android:background="@drawable/bg_input_field" android:hint="Enter Your Phone no." android:inputType="phone" android:paddingHorizontal="14dp" android:textColor="@color/white" android:textColorHint="@color/hint_gray" android:textSize="14sp" />
+
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="8dp" android:text="Email" android:textColor="@color/white" android:textSize="13sp" android:textStyle="bold" />
+                <EditText android:id="@+id/etEmail" android:layout_width="match_parent" android:layout_height="48dp" android:layout_marginBottom="12dp" android:background="@drawable/bg_input_field" android:hint="e.g. name@company.com" android:inputType="textEmailAddress" android:paddingHorizontal="14dp" android:textColor="@color/white" android:textColorHint="@color/hint_gray" android:textSize="14sp" />
+
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="8dp" android:text="Location" android:textColor="@color/white" android:textSize="13sp" android:textStyle="bold" />
+                <EditText android:id="@+id/etLocation" android:layout_width="match_parent" android:layout_height="48dp" android:background="@drawable/bg_input_field" android:hint="Enter Your Location" android:paddingHorizontal="14dp" android:textColor="@color/white" android:textColorHint="@color/hint_gray" android:textSize="14sp" />
+
+            </LinearLayout>
+
+            <!-- Service Details Card -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_service_card"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="16dp" android:text="Service Details" android:textColor="@color/gold" android:textSize="16sp" android:textStyle="bold" />
+
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="8dp" android:text="Quantity/ No. of people" android:textColor="@color/white" android:textSize="13sp" android:textStyle="bold" />
+                <EditText android:id="@+id/etQuantity" android:layout_width="match_parent" android:layout_height="48dp" android:layout_marginBottom="16dp" android:background="@drawable/bg_input_field" android:hint="e.g. 50" android:inputType="number" android:paddingHorizontal="14dp" android:textColor="@color/white" android:textColorHint="@color/hint_gray" android:textSize="14sp" />
+
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="8dp" android:text="Required date:" android:textColor="@color/white" android:textSize="13sp" android:textStyle="bold" />
+                <EditText
+                    android:id="@+id/etDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:background="@drawable/bg_input_field"
+                    android:hint="DD / MM / YYYY"
+                    android:inputType="text"
+                    android:maxLength="10"
+                    android:paddingHorizontal="14dp"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/hint_gray"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
 
         </LinearLayout>
+    </ScrollView>
 
-    </LinearLayout>
-</ScrollView>
+    <!-- Bottom Nav -->
+    <include layout="@layout/bottom_nav" />
+
+</LinearLayout>

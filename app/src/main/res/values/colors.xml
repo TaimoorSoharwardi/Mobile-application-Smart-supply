@@ -2,4 +2,19 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="bg_dark">#1A0E00</color>
+    <color name="bg_card">#2A1800</color>
+    <color name="gold">#C49A00</color>
+    <color name="gold_dark">#8B6B00</color>
+    <color name="gold_light">#E8B800</color>
+    <color name="hint_gray">#9E9E9E</color>
+    <color name="text_secondary">#BBBBBB</color>
+    <color name="status_pending">#C49A00</color>
+    <color name="status_delivered">#4CAF50</color>
+    <color name="status_completed">#4CAF50</color>
+    <color name="status_rejected">#E53935</color>
+    <color name="active_green">#4CAF50</color>
+    <color name="logout_red">#C62828</color>
+    <color name="logo_black">#000000</color>
+    <color name="transparent">#00000000</color>
 </resources>
