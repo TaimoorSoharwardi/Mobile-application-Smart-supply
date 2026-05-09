@@ -2,9 +2,9 @@ package com.example.mobileapplicationsmartsupply.main.model
 
 import com.example.mobileapplicationsmartsupply.data.model.Order
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ListenerRegistration
-import com.google.firebase.firestore.Query
 
 class OrderRepository {
 
@@ -14,15 +14,25 @@ class OrderRepository {
 
     private fun currentUserId() = auth.currentUser?.uid ?: ""
 
+    // Reads createdAt from a document, handling both Long and Timestamp formats
+    private fun getCreatedAt(doc: DocumentSnapshot): Long {
+        return doc.getLong("createdAt")
+            ?: doc.getTimestamp("createdAt")?.toDate()?.time
+            ?: 0L
+    }
+
     fun getAllOrders(onSuccess: (List<Order>) -> Unit, onError: (String) -> Unit) {
         collection
             .whereEqualTo("userId", currentUserId())
-            .orderBy("createdAt", Query.Direction.DESCENDING)
             .get()
             .addOnSuccessListener { result ->
-                val orders = result.documents.mapNotNull { doc ->
-                    doc.toObject(Order::class.java)?.copy(id = doc.id)
-                }
+                val orders = result.documents
+                    .mapNotNull { doc ->
+                        doc.toObject(Order::class.java)?.copy(id = doc.id)
+                            ?.let { order -> Pair(order, getCreatedAt(doc)) }
+                    }
+                    .sortedByDescending { it.second }
+                    .map { it.first }
                 onSuccess(orders)
             }
             .addOnFailureListener { onError(it.message ?: "Failed to load orders") }
@@ -31,14 +41,19 @@ class OrderRepository {
     fun listenToOrders(onUpdate: (List<Order>) -> Unit): ListenerRegistration {
         return collection
             .whereEqualTo("userId", currentUserId())
-            .orderBy("createdAt", Query.Direction.DESCENDING)
-            .addSnapshotListener { snapshot, _ ->
-                if (snapshot != null) {
-                    val orders = snapshot.documents.mapNotNull { doc ->
-                        doc.toObject(Order::class.java)?.copy(id = doc.id)
-                    }
-                    onUpdate(orders)
+            .addSnapshotListener { snapshot, error ->
+                if (error != null || snapshot == null) {
+                    onUpdate(emptyList())
+                    return@addSnapshotListener
                 }
+                val orders = snapshot.documents
+                    .mapNotNull { doc ->
+                        doc.toObject(Order::class.java)?.copy(id = doc.id)
+                            ?.let { order -> Pair(order, getCreatedAt(doc)) }
+                    }
+                    .sortedByDescending { it.second }
+                    .map { it.first }
+                onUpdate(orders)
             }
     }
 
@@ -55,7 +70,7 @@ class OrderRepository {
             "date" to order.date,
             "price" to order.price,
             "status" to order.status,
-            "createdAt" to com.google.firebase.Timestamp.now()
+            "createdAt" to System.currentTimeMillis()
         )
         collection.add(data)
             .addOnSuccessListener { onSuccess() }

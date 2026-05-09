@@ -23,7 +23,7 @@ class ProfileActivity : BaseActivity() {
         loadUserProfile()
 
         findViewById<LinearLayout>(R.id.btnEditProfile).setOnClickListener {
-            Toast.makeText(this, "Edit Profile coming soon", Toast.LENGTH_SHORT).show()
+            startActivity(Intent(this, EditProfileActivity::class.java))
         }
 
         findViewById<LinearLayout>(R.id.btnNotifications).setOnClickListener {

@@ -3,6 +3,7 @@ package com.example.mobileapplicationsmartsupply.auth.model
 import com.example.mobileapplicationsmartsupply.data.model.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.SetOptions
 
 class AuthRepository {
 
@@ -71,6 +72,29 @@ class AuthRepository {
                 onSuccess(user)
             }
             .addOnFailureListener { onError(it.message ?: "Failed to load profile") }
+    }
+
+    fun updateUserProfile(
+        firstName: String,
+        lastName: String,
+        phone: String,
+        location: String,
+        company: String,
+        onSuccess: () -> Unit,
+        onError: (String) -> Unit
+    ) {
+        val uid = getCurrentUserId()
+        if (uid.isEmpty()) { onError("Not logged in"); return }
+        val updates = mapOf(
+            "firstName" to firstName,
+            "lastName" to lastName,
+            "phone" to phone,
+            "location" to location,
+            "company" to company
+        )
+        db.collection("users").document(uid).set(updates, SetOptions.merge())
+            .addOnSuccessListener { onSuccess() }
+            .addOnFailureListener { onError(it.message ?: "Failed to update profile") }
     }
 
     fun logout() = auth.signOut()

@@ -67,6 +67,12 @@ class NewRequestActivity : BaseActivity() {
 
         tvSubServiceSelector.setOnClickListener { openSubServicePicker() }
         btnSubmit.setOnClickListener { submitRequest() }
+
+        // Pre-populate email from Firebase Auth so the user doesn't have to type it
+        val authEmail = FirebaseAuth.getInstance().currentUser?.email ?: ""
+        if (authEmail.isNotEmpty()) {
+            findViewById<EditText>(R.id.etEmail).setText(authEmail)
+        }
     }
 
     private fun revealSubServiceSelector(category: String) {
@@ -112,7 +118,7 @@ class NewRequestActivity : BaseActivity() {
             quantityStr.isEmpty() -> toast("Please enter the quantity")
             date.isEmpty() -> toast("Please enter the required date (DD / MM / YYYY)")
             !isValidDate(date) -> toast("Enter date as DD / MM / YYYY — e.g. 25 / 06 / 2026")
-            else -> saveRequest(fullName, phone, quantityStr.toInt(), location, date)
+            else -> saveRequest(fullName, phone, email, quantityStr.toInt(), location, date)
         }
     }
 
@@ -125,7 +131,7 @@ class NewRequestActivity : BaseActivity() {
         return day in 1..31 && month in 1..12 && year >= 2024
     }
 
-    private fun saveRequest(name: String, phone: String, quantity: Int, location: String, date: String) {
+    private fun saveRequest(name: String, phone: String, email: String, quantity: Int, location: String, date: String) {
         btnSubmit.isEnabled = false
         btnSubmit.alpha = 0.6f
         LoadingDialog.show(this, "Submitting your request...")
@@ -139,7 +145,7 @@ class NewRequestActivity : BaseActivity() {
             title = "$selectedCategory Services",
             category = selectedCategory,
             subService = selectedSubService,
-            description = "Request by $name — $phone",
+            description = "Request by $name — $phone — $email",
             quantity = quantity,
             address = location,
             date = date,

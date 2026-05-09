@@ -15,29 +15,13 @@
         android:paddingBottom="40dp">
 
         <!-- Logo -->
-        <LinearLayout
-            android:layout_width="110dp"
-            android:layout_height="110dp"
-            android:background="@drawable/bg_logo_black_circle"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:layout_marginBottom="32dp">
-
-            <ImageView
-                android:layout_width="52dp"
-                android:layout_height="52dp"
-                android:src="@drawable/ic_logo_gem" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:text="SMARTSUPPLY"
-                android:textColor="@color/gold"
-                android:textSize="7sp"
-                android:letterSpacing="0.1" />
-
-        </LinearLayout>
+        <ImageView
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+            android:src="@drawable/ic_logo_smart_supply"
+            android:scaleType="fitCenter"
+            android:layout_marginBottom="32dp"
+            android:contentDescription="Smart Supply Logo" />
 
         <!-- Title -->
         <TextView
